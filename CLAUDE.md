@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude (claude.ai) when working with this project.
 
 ## What This Project Is
 
@@ -25,6 +25,18 @@ open OFFICE_OPS/dashboard.html
   - `reporting/`, `projects/`, `quality/`, `resources/`, `incidents/` — Operational tracking directories
 
 **Operations Manager** is the coordination hub that routes work between agents and escalates to the human decision-maker. All cross-agent workflows are defined in `COORDINATION_MATRIX.md`.
+
+## Prebuilt Workflows
+
+The `skills/` directory contains prebuilt workflows. Read the relevant `SKILL.md` and execute it when the user's intent matches:
+
+| Skill | Trigger phrases |
+|-------|----------------|
+| `skills/daily-triage/` | "run triage", "process my inbox", "start the day", "delegate today's tasks" |
+| `skills/standup/` | "standup", "quick status", "what's on today", "what are we working on" |
+| `skills/office-health-check/` | "health check", "how is the office doing", "check capacity", "office status" |
+| `skills/weekly-brief/` | "weekly brief", "wrap up the week", "how did this week go", "weekly summary" |
+| `skills/onboard-agent/` | "add a new agent", "create a new role", "hire a [role]", "onboard a [role]" |
 
 ## Conventions
 

@@ -1,6 +1,6 @@
 ---
 name: daily-triage
-description: Run the daily email and task triage workflow. Processes inbox, delegates to the right agents via the coordination matrix, logs outputs to OFFICE_OPS/reporting/daily/. Use at the start of each workday.
+description: Use when the user says "run triage", "do daily triage", "process my inbox", "start the day", or asks to delegate today's tasks. Runs the full daily email and task triage workflow.
 ---
 
 # Daily Triage Workflow

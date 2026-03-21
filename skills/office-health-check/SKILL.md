@@ -1,6 +1,6 @@
 ---
 name: office-health-check
-description: Run a full office health check across all agents. Reviews roster utilization, active projects, open escalations, and coordination gaps. Use weekly or when something feels off.
+description: Use when the user says "health check", "how is the office doing", "check team capacity", "office status", "what's overloaded", or asks for a team overview. Reviews utilization, projects, escalations, and coordination gaps.
 ---
 
 # Office Health Check

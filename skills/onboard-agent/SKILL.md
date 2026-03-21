@@ -1,6 +1,6 @@
 ---
 name: onboard-agent
-description: Create a new AI agent role file from scratch. Use when adding a new employee to the agent-office. Guides through role definition, capability scoping, coordination setup, and roster update.
+description: Use when the user says "add a new agent", "create a new role", "hire a [role]", "onboard a [role]", or wants to add a new employee to the office. Guides through role definition, capability scoping, coordination setup, and roster update.
 ---
 
 # Onboard New Agent
