@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>AI Agent Office Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f3f1eb;
+            --surface: rgba(255, 255, 255, 0.78);
+            --surface-strong: #ffffff;
+            --surface-muted: #f7f5ef;
+            --border: rgba(25, 25, 24, 0.1);
+            --border-strong: rgba(25, 25, 24, 0.16);
+            --text: #111111;
+            --text-muted: #5f5b53;
+            --text-subtle: #878277;
+            --success: #2f7d4c;
+            --success-soft: #e7f2ea;
+            --warning: #9b6a15;
+            --warning-soft: #f7efdb;
+            --danger: #a53d2d;
+            --danger-soft: #f8e8e5;
+            --shadow: 0 10px 28px rgba(18, 18, 18, 0.04);
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --radius-sm: 8px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            background: var(--bg);
+            padding: 28px 20px 40px;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-subtle);
+        }
+
+        .brand-block h1 {
+            font-size: clamp(2.2rem, 4vw, 3.9rem);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            font-weight: 600;
+        }
+
+        .brand-block p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 620px;
+            line-height: 1.5;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .status-badge,
+        .pill,
+        .card-badge,
+        .domain-badge,
+        .project-status {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .status-badge {
+            padding: 10px 14px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .hero-panel,
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-panel {
+            padding: 24px;
+            margin-bottom: 18px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .hero-copy h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-copy p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 15px;
+            max-width: 600px;
+        }
+
+        .hero-note {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+        }
+
+        .hero-note-label {
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        .hero-note strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .hero-note p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+
+        .pill {
+            padding: 16px 18px;
+            min-height: 104px;
+        }
+
+        .pill-label {
+            color: var(--text-subtle);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .pill-value {
+            font-size: 30px;
+            letter-spacing: -0.04em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pill-meta {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .card-badge {
+            padding: 8px 12px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .roster-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .roster-disclosure {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.62);
+            overflow: hidden;
+        }
+
+        .roster-summary {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+            cursor: pointer;
+            user-select: none;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .roster-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .roster-summary-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .roster-chevron {
+            font-size: 12px;
+            color: var(--text-subtle);
+            transition: transform 0.18s ease;
+        }
+
+        .roster-disclosure[open] .roster-chevron {
+            transform: rotate(90deg);
+        }
+
+        .roster-summary-meta {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .roster-panel {
+            padding: 0 18px 18px;
+            border-top: 1px solid var(--border);
+        }
+
+        .roster-table th {
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-subtle);
+            font-weight: 600;
+            padding: 0 0 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .roster-table td {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+            vertical-align: middle;
+        }
+
+        .roster-table tbody tr:last-child td {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .roster-table tbody tr:hover {
+            background: transparent;
+        }
+
+        .employee-cell {
+            padding-right: 18px;
+        }
+
+        .role-name {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .domain-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .capacity-stack {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .capacity-bar {
+            width: 100%;
+            height: 10px;
+            background: #e6e1d8;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .capacity-fill {
+            height: 100%;
+            border-radius: 0;
+            background: linear-gradient(90deg, #111111 0%, #4a4a46 100%);
+        }
+
+        .capacity-label {
+            min-width: 42px;
+            text-align: right;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .project-list,
+        .coordination-list,
+        .alert-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .project-item,
+        .coordination-box,
+        .alert {
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+        }
+
+        .project-item {
+            padding: 18px 18px 16px;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .project-item:hover,
+        .coordination-box:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(18, 18, 18, 0.04);
+        }
+
+        .project-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .project-title strong {
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
+        .project-status {
+            padding: 7px 11px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .project-status.green {
+            background: var(--success-soft);
+            color: var(--success);
+            border-color: rgba(47, 125, 76, 0.14);
+        }
+
+        .project-status.yellow {
+            background: var(--warning-soft);
+            color: var(--warning);
+            border-color: rgba(155, 106, 21, 0.16);
+        }
+
+        .project-status.red {
+            background: var(--danger-soft);
+            color: var(--danger);
+            border-color: rgba(165, 61, 45, 0.16);
+        }
+
+        .project-timeline {
+            font-size: 13px;
+            color: var(--text-subtle);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .project-details {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .coordination-box {
+            padding: 18px;
+        }
+
+        .coordination-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .coordination-flow {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            background: var(--surface-muted);
+            border: 1px solid rgba(17, 17, 17, 0.06);
+        }
+
+        .health-metric {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .metric-box {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .metric-value {
+            font-size: 34px;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .metric-copy {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .alert {
+            padding: 16px 18px;
+        }
+
+        .alert-label {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+
+        .alert.success .alert-label {
+            background: var(--success-soft);
+            color: var(--success);
+        }
+
+        .alert.warning .alert-label {
+            background: var(--warning-soft);
+            color: var(--warning);
+        }
+
+        .alert.danger .alert-label {
+            background: var(--danger-soft);
+            color: var(--danger);
+        }
+
+        .alert p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .empty-state {
+            padding: 30px 4px 6px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .empty-state strong {
+            display: block;
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 1100px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topbar-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 18px 14px 28px;
+            }
+
+            .brand-block h1 {
+                font-size: 2.2rem;
+                line-height: 1;
+            }
+
+            .card,
+            .hero-panel {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .hero-panel {
+                margin-bottom: 14px;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pill {
+                min-height: unset;
+            }
+
+            .card-header,
+            .project-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-header {
+                margin-bottom: 16px;
+            }
+
+            .topbar-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .status-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .roster-summary {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 14px 16px;
+            }
+
+            .roster-panel {
+                padding: 0 16px 16px;
+            }
+
+            .roster-table thead {
+                display: none;
+            }
+
+            .roster-table,
+            .roster-table tbody,
+            .roster-table tr,
+            .roster-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .roster-table tr {
+                padding: 14px 0;
+                border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+            }
+
+            .roster-table tbody tr:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .roster-table td {
+                border-bottom: none;
+                padding: 0;
+            }
+
+            .employee-cell {
+                margin-bottom: 12px;
+            }
+
+            .health-metric {
+                grid-template-columns: 1fr;
+            }
+
+            .project-status,
+            .card-badge {
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 14px 12px 24px;
+            }
+
+            .brand-block h1 {
+                font-size: 1.95rem;
+            }
+
+            .hero-copy p,
+            .hero-note p,
+            .pill-meta,
+            .project-details,
+            .alert p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="topbar">
+            <div class="brand-block">
+                <div class="eyebrow">OpenAI-style Operations View</div>
+                <h1>AI Agent Office</h1>
+                <p>A calm standalone dashboard for routing work, monitoring capacity, and tracking office health across the team.</p>
+            </div>
+            <div class="topbar-actions">
+                <div class="status-badge">Single HTML file with embedded office data</div>
+            </div>
+        </header>
+
+        <section class="hero-panel">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <h2>Office operations, reduced to the essentials.</h2>
+                    <p>This view keeps attention on the signals that matter: who has bandwidth, which initiatives need intervention, and how cross-functional handoffs are flowing this week.</p>
+                </div>
+                <div class="hero-note">
+                    <div class="hero-note-label">Current operating note</div>
+                    <strong>Documentation and routing are stable.</strong>
+                    <p>Current follow-up is concentrated on process documentation phase 2 and balancing lower-capacity coverage areas before they become delivery risks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-grid" id="summary-content">
+            <!-- Populated by JS -->
+        </section>
+
+        <main class="dashboard-grid">
+            <section class="card">
+                <div class="card-header">
+                    <h2>Employee roster</h2>
+                    <span class="card-badge" id="roster-count">0 employees</span>
+                </div>
+                <div id="roster-content"></div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h2>Active projects</h2>
+                    <span class="card-badge" id="projects-count">0 projects</span>
+                </div>
+                <div id="projects-content"></div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h2>Coordination flows</h2>
+                    <span class="card-badge" id="coordination-count">0 flows</span>
+                </div>
+                <div id="coordination-content"></div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h2>Office health</h2>
+                    <span class="card-badge">Weekly view</span>
+                </div>
+                <div id="health-content"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const ROSTER_DATA = [
+            { name: 'Account Executive', domain: 'Sales', capacity: 80 },
+            { name: 'Account Manager', domain: 'Sales', capacity: 75 },
+            { name: 'Briefing Officer', domain: 'Leadership Support', capacity: 70 },
+            { name: 'Content Writer', domain: 'Marketing', capacity: 85 },
+            { name: 'Customer Success Manager', domain: 'Success', capacity: 80 },
+            { name: 'Data Analyst', domain: 'Operations', capacity: 60 },
+            { name: 'Executive Assistant', domain: 'Leadership Support', capacity: 90 },
+            { name: 'HR Coordinator', domain: 'People', capacity: 75 },
+            { name: 'IT Support', domain: 'Infrastructure', capacity: 50 },
+            { name: 'Legal Counsel', domain: 'Risk & Compliance', capacity: 65 },
+            { name: 'Marketing Coordinator', domain: 'Marketing', capacity: 80 },
+            { name: 'Operations Manager', domain: 'Operations', capacity: 85 },
+            { name: 'Product Manager', domain: 'Product', capacity: 80 },
+            { name: 'Project Manager', domain: 'Operations', capacity: 75 },
+            { name: 'Recruiter', domain: 'People', capacity: 70 },
+            { name: 'Sales Development Rep (SDR)', domain: 'Sales', capacity: 85 },
+            { name: 'Security Analyst', domain: 'Risk & Compliance', capacity: 55 },
+            { name: 'Social Media Crawler', domain: 'Marketing', capacity: 40 },
+            { name: 'Support Specialist', domain: 'Customer Support', capacity: 90 }
+        ];
+
+        const PROJECTS_DATA = [
+            { title: 'Office Operations System Setup', status: 'green', timeline: 'Complete by Mar 31', details: 'Folder structure and core documentation are in place and usable by the office team.' },
+            { title: 'Employee Performance Metrics', status: 'yellow', timeline: 'In progress', details: 'Quality standards and baseline metrics are being defined for consistent weekly reporting.' },
+            { title: 'Process Documentation Phase 2', status: 'yellow', timeline: 'Complete by Apr 15', details: 'Cross-functional SOPs and workflow mapping need additional attention before handoff review.' }
+        ];
+
+        const COORDINATION_DATA = [
+            { title: 'Sales Pipeline', flow: 'SDR -> Account Executive -> Account Manager -> Customer Success Manager -> Support' },
+            { title: 'Marketing & Content', flow: 'Product Manager -> Content Writer -> Marketing Coordinator -> Social Media Crawler' },
+            { title: 'Operations & Leadership', flow: 'Executive Assistant <-> Briefing Officer <-> Operations Manager -> Project Manager' },
+            { title: 'Risk & Compliance', flow: 'Legal Counsel <-> Security Analyst <-> HR Coordinator -> IT Support' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDashboard();
+        });
+
+        function renderDashboard() {
+            loadSummary();
+            loadRoster();
+            loadProjects();
+            loadCoordination();
+            loadHealth();
+        }
+
+        function averageCapacity() {
+            return Math.round(ROSTER_DATA.reduce((sum, employee) => sum + employee.capacity, 0) / ROSTER_DATA.length);
+        }
+
+        function lowCapacityCount() {
+            return ROSTER_DATA.filter(employee => employee.capacity <= 55).length;
+        }
+
+        function loadSummary() {
+            const avg = averageCapacity();
+            const html = `
+                <div class="pill">
+                    <div class="pill-label">Average utilization</div>
+                    <div class="pill-value">${avg}%</div>
+                    <div class="pill-meta">Balanced team load across ${ROSTER_DATA.length} active roles.</div>
+                </div>
+                <div class="pill">
+                    <div class="pill-label">Active projects</div>
+                    <div class="pill-value">${PROJECTS_DATA.length}</div>
+                    <div class="pill-meta">${PROJECTS_DATA.filter(project => project.status !== 'green').length} items currently need follow-up.</div>
+                </div>
+                <div class="pill">
+                    <div class="pill-label">Coordination flows</div>
+                    <div class="pill-value">${COORDINATION_DATA.length}</div>
+                    <div class="pill-meta">Documented handoffs across sales, marketing, operations, and compliance.</div>
+                </div>
+                <div class="pill">
+                    <div class="pill-label">Coverage watch</div>
+                    <div class="pill-value">${lowCapacityCount()}</div>
+                    <div class="pill-meta">Roles at or below 55% capacity should be reviewed for load balancing.</div>
+                </div>
+            `;
+
+            document.getElementById('summary-content').innerHTML = html;
+        }
+
+        function loadRoster() {
+            const html = `
+                <details class="roster-disclosure" open>
+                    <summary class="roster-summary">
+                        <span class="roster-summary-label">
+                            <span class="roster-chevron">▶</span>
+                            <span>Capacity by employee</span>
+                        </span>
+                        <span class="roster-summary-meta">${ROSTER_DATA.length} active roles</span>
+                    </summary>
+                    <div class="roster-panel">
+                        <table class="roster-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Capacity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${ROSTER_DATA.map(employee => `
+                                    <tr>
+                                        <td class="employee-cell">
+                                            <span class="role-name">${employee.name}</span>
+                                            <span class="domain-badge">${employee.domain}</span>
+                                        </td>
+                                        <td>
+                                            <div class="capacity-stack">
+                                                <div class="capacity-bar">
+                                                    <div class="capacity-fill" style="width: ${employee.capacity}%"></div>
+                                                </div>
+                                                <div class="capacity-label">${employee.capacity}%</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            `;
+
+            document.getElementById('roster-content').innerHTML = html;
+            document.getElementById('roster-count').textContent = `${ROSTER_DATA.length} employees`;
+        }
+
+        function loadProjects() {
+            const html = PROJECTS_DATA.length
+                ? `<div class="project-list">
+                    ${PROJECTS_DATA.map(project => `
+                        <article class="project-item">
+                            <div class="project-title">
+                                <strong>${project.title}</strong>
+                                <span class="project-status ${project.status}">${project.status}</span>
+                            </div>
+                            <div class="project-timeline">${project.timeline}</div>
+                            <div class="project-details">${project.details}</div>
+                        </article>
+                    `).join('')}
+                </div>`
+                : `<div class="empty-state"><strong>No active projects</strong>Project status will appear here once current initiatives are tracked.</div>`;
+
+            document.getElementById('projects-content').innerHTML = html;
+            document.getElementById('projects-count').textContent = `${PROJECTS_DATA.length} projects`;
+        }
+
+        function loadCoordination() {
+            const html = COORDINATION_DATA.length
+                ? `<div class="coordination-list">
+                    ${COORDINATION_DATA.map(flow => `
+                        <article class="coordination-box">
+                            <div class="coordination-title">${flow.title}</div>
+                            <div class="coordination-flow">${flow.flow}</div>
+                        </article>
+                    `).join('')}
+                </div>`
+                : `<div class="empty-state"><strong>No coordination flows</strong>Documented handoffs will appear here.</div>`;
+
+            document.getElementById('coordination-content').innerHTML = html;
+            document.getElementById('coordination-count').textContent = `${COORDINATION_DATA.length} flows`;
+        }
+
+        function loadHealth() {
+            const avg = averageCapacity();
+            const constrainedRoles = ROSTER_DATA
+                .filter(employee => employee.capacity <= 55)
+                .map(employee => employee.name)
+                .join(', ');
+
+            const health = `
+                <div class="health-metric">
+                    <div class="metric-box">
+                        <div class="metric-label">Average utilization</div>
+                        <div class="metric-value">${avg}%</div>
+                        <div class="metric-copy">A healthy mid-range workload with room to reassign urgent work.</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-label">Projects needing attention</div>
+                        <div class="metric-value">${PROJECTS_DATA.filter(project => project.status !== 'green').length}</div>
+                        <div class="metric-copy">Focused follow-up is currently centered on documentation and reporting maturity.</div>
+                    </div>
+                </div>
+                <div class="alert-list">
+                    <div class="alert success">
+                        <div class="alert-label">Stable</div>
+                        <p>Critical coordination paths are documented, and the office structure is stable enough for ongoing routing and weekly operations review.</p>
+                    </div>
+                    <div class="alert warning">
+                        <div class="alert-label">Watch</div>
+                        <p>Lower-capacity roles currently include ${constrainedRoles}. Review handoffs and rebalance workload before those areas become bottlenecks.</p>
+                    </div>
+                    <div class="alert warning">
+                        <div class="alert-label">Focus</div>
+                        <p>Process documentation phase 2 remains the clearest follow-up priority ahead of the April 15, 2026 milestone.</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('health-content').innerHTML = health;
+        }
+    </script>
+</body>
+</html>

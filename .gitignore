@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Archives and binaries
+*.zip
+*.xlsx
+*.xls
+
+# Daily operational reports (contain private data — keep local only)
+OFFICE_OPS/reporting/daily/*
+!OFFICE_OPS/reporting/daily/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
