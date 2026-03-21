@@ -24,8 +24,7 @@ agent-office/
 │   ├── account_executive.md
 │   └── ... (16 more roles)
 ├── OFFICE_OPS/                  # Central operations hub
-│   ├── dashboard.html           # Live operations dashboard (open in browser)
-│   ├── server.py                # Python local server for live dashboard
+│   ├── dashboard.html           # Operations dashboard (open in browser, no server needed)
 │   ├── OPERATIONS_GUIDE.md      # Operations Manager quick-start guide
 │   ├── DASHBOARD_README.md      # Dashboard setup guide
 │   ├── employees/
@@ -70,14 +69,13 @@ agent-office/
 
 Open any file in `employee/` and paste its contents as the system prompt in your AI interface. Each file is self-contained — the agent will behave according to its role definition.
 
-### 2. Start the operations dashboard
+### 2. Open the operations dashboard
+
+Double-click `OFFICE_OPS/dashboard.html` or run:
 
 ```bash
-cd OFFICE_OPS/
-python3 server.py
+open OFFICE_OPS/dashboard.html
 ```
-
-Open `http://localhost:8000/dashboard.html` in your browser, or open `OFFICE_OPS/dashboard.html` directly for a static view.
 
 ### 3. Customize for your company
 
