@@ -132,6 +132,41 @@ Full handoff logic: `OFFICE_OPS/coordination/COORDINATION_MATRIX.md`
 
 ---
 
+## Using with Claude Desktop (Cowork)
+
+This project is designed to work natively with [Claude Desktop](https://claude.com/download) via the **Cowork** tab, which lets you open a local folder as a persistent project so Claude reads your agent files automatically in every conversation.
+
+### Setup
+
+1. Open Claude Desktop and click the **Cowork** tab
+2. Click **Projects** in the left panel → **+** to create a new project
+3. Select **"Use an existing folder"** and pick your local `agent-office` directory
+4. Name the project (e.g. "Agent Office") and click **Create**
+
+Claude will now automatically read `CLAUDE.md` at the start of every session, giving it full context about the project structure, roles, and conventions — no need to re-explain anything.
+
+### Recommended workflow
+
+- Open a conversation, activate the **Operations Manager** agent (paste `employee/operations_manager.md` as your system prompt or attach the file), and start delegating tasks
+- Claude can read any file in the project directly — reference `OFFICE_OPS/employees/ROSTER.md`, `COORDINATION_MATRIX.md`, or any role file by name
+- Write daily triage logs to `OFFICE_OPS/reporting/daily/` locally — they're gitignored so they never get committed
+
+### Connecting external tools via MCP
+
+Claude Desktop supports MCP (Model Context Protocol) servers that give agents real-time access to external tools. Useful integrations for this setup:
+
+| Tool | What it enables |
+|------|----------------|
+| Gmail | Executive Assistant can read/draft emails |
+| Google Calendar | Scheduling, availability checks |
+| Notion | Project tracking, knowledge base |
+| GitHub | Code review, issue management |
+| Slack | Team communication routing |
+
+To add MCP servers: **Settings → Developer → Edit Config** in Claude Desktop. See the [official MCP docs](https://modelcontextprotocol.io) for server setup instructions.
+
+---
+
 ## License
 
 MIT — fork, customize, and use freely.
