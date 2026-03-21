@@ -1,172 +1,172 @@
-# AI Agent Office
+# 🏢 AI Agent Office
 
-A documentation-driven AI agent orchestration system — a full virtual office of role-defined AI agents with a coordination framework, operations hub, and live dashboard.
+> A complete virtual office of role-defined AI agents — with a coordination framework, operations hub, and live dashboard. Fork it, customize it, run your own AI-powered team.
 
-Fork this template to spin up your own AI-powered team for any company, product, or workflow.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Agents](https://img.shields.io/badge/agents-19_roles-indigo.svg)
+![No dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)
 
 ---
 
 ## What This Is
 
-This project defines a **hub-and-spoke AI agent office**: a set of role-specific system prompts (the "employees") coordinated through a central operations framework. Each agent has defined capabilities, tone, output formats, coordination partners, and escalation triggers. The Operations Manager agent routes work between all other agents and escalates decisions to the human owner.
+A **hub-and-spoke AI agent office**: role-specific system prompts ("employees") coordinated through a central operations framework. Each agent has defined capabilities, tone, output formats, coordination partners, and escalation triggers. The Operations Manager routes work between all agents and escalates decisions to you.
 
-There is no build system, no package manager, and no external API required. The system runs in any AI chat interface (Claude, ChatGPT, etc.) using the markdown files as system prompts.
-
----
-
-## Repository Structure
-
-```
-agent-office/
-├── employee/                    # Role-definition files (system prompts)
-│   ├── operations_manager.md
-│   ├── executive_assistant.md
-│   ├── account_executive.md
-│   └── ... (16 more roles)
-├── OFFICE_OPS/                  # Central operations hub
-│   ├── dashboard.html           # Operations dashboard (open in browser, no server needed)
-│   ├── OPERATIONS_GUIDE.md      # Operations Manager quick-start guide
-│   ├── DASHBOARD_README.md      # Dashboard setup guide
-│   ├── employees/
-│   │   └── ROSTER.md            # All agents, capacity, routing rules
-│   ├── coordination/
-│   │   └── COORDINATION_MATRIX.md  # Cross-agent handoffs and dependencies
-│   ├── processes/
-│   │   └── DAILY_ROUTINE_SOP.md    # Daily workflow SOP
-│   ├── reporting/daily/         # Your operational logs (gitignored locally)
-│   ├── projects/                # Active project tracking
-│   ├── quality/                 # Quality standards and metrics
-│   ├── resources/               # Capacity planning
-│   ├── training/                # Onboarding and playbooks
-│   └── incidents/               # Incident log
-├── AGENTS.md                    # Repo guidelines for AI agents
-├── GAP_ANALYSIS.md              # Role gap analysis and expansion roadmap
-└── README.md
-```
+No build system. No package manager. No external API required. Runs in any AI chat interface using markdown files as system prompts.
 
 ---
 
-## Included Roles (19 Agents)
+## 👥 The Team (19 Agents)
 
 | Domain | Roles |
 |--------|-------|
-| Leadership Support | Executive Assistant, Briefing Officer |
-| Sales | SDR, Account Executive, Account Manager |
-| Marketing | Marketing Coordinator, Content Writer, Social Media Crawler |
-| Product | Product Manager |
-| Operations | Operations Manager, Project Manager |
-| Support | Support Specialist, Customer Success Manager |
-| People | HR Coordinator, Recruiter |
-| Analytics | Data Analyst |
-| Legal / Risk | Legal Counsel, Security Analyst |
-| IT | IT Support |
+| 🧭 Leadership Support | Executive Assistant, Briefing Officer |
+| 💼 Sales | SDR, Account Executive, Account Manager |
+| 📣 Marketing | Marketing Coordinator, Content Writer, Social Media Crawler |
+| 🛠 Product | Product Manager |
+| ⚙️ Operations | Operations Manager, Project Manager |
+| 🎧 Support | Support Specialist, Customer Success Manager |
+| 🧑‍💼 People | HR Coordinator, Recruiter |
+| 📊 Analytics | Data Analyst |
+| ⚖️ Legal / Risk | Legal Counsel, Security Analyst |
+| 💻 IT | IT Support |
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
-### 1. Use a role as a system prompt
+**1. Activate an agent**
 
-Open any file in `employee/` and paste its contents as the system prompt in your AI interface. Each file is self-contained — the agent will behave according to its role definition.
+Open any file in `employee/` and paste it as your system prompt. Each file is fully self-contained.
 
-### 2. Open the operations dashboard
-
-Double-click `OFFICE_OPS/dashboard.html` or run:
+**2. Open the dashboard**
 
 ```bash
 open OFFICE_OPS/dashboard.html
 ```
 
-### 3. Customize for your company
+Double-click `OFFICE_OPS/dashboard.html` — no server needed, works in any browser.
 
-- Replace `[Your Company]` and `[Your Name]` placeholders in `OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md`
-- Edit `OFFICE_OPS/employees/ROSTER.md` to reflect your team's capacity
-- Update `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` for your handoff logic
+**3. Customize for your company**
 
----
-
-## Daily Workflow
-
-`OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md` defines a repeatable daily routine:
-
-1. **Morning (8:00–8:30 AM):** Dashboard check, email triage, calendar review
-2. **Active Work (8:30 AM–12:00 PM):** Delegate via coordination matrix, process backlog
-3. **Follow-Up (1:00–4:00 PM):** Monitor delegated work, ad-hoc requests, cross-role coordination
-4. **Daily Close (4:00–5:00 PM):** Task close-out, update daily log, prep for tomorrow
-
-Log your daily work to `OFFICE_OPS/reporting/daily/YYYY-MM-DD-email-triage.md` — this directory is gitignored so your operational data stays local.
+- Replace `[Your Company]` and `[Your Name]` in `OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md`
+- Update `OFFICE_OPS/employees/ROSTER.md` with your team's capacity
+- Edit `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` for your handoff logic
 
 ---
 
-## Adding New Agents
+## 🖥 Using with Claude Desktop (Cowork)
 
-1. Create `employee/[role_name].md` using lowercase underscores
-2. Follow the existing structure: Role & Purpose → Tone & Style → Core Capabilities → Response Guidelines → Output Formats → Coordination → Escalation Triggers
-3. Add the role to `OFFICE_OPS/employees/ROSTER.md`
-4. Update `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` with any new handoffs
-
-See `GAP_ANALYSIS.md` for a prioritized list of roles to add.
-
----
-
-## Architecture
-
-```
-Human Owner
-    │
-    ▼
-Operations Manager ◀──────────── all escalations route here
-    │
-    ├──▶ Executive Assistant ◀──▶ Briefing Officer
-    ├──▶ Sales (SDR → AE → Account Manager → CSM)
-    ├──▶ Marketing (Coordinator → Content Writer → Social Media)
-    ├──▶ Product Manager
-    ├──▶ Project Manager
-    ├──▶ Legal Counsel ◀──▶ Security Analyst
-    ├──▶ HR Coordinator ◀──▶ Recruiter
-    ├──▶ Data Analyst
-    └──▶ IT Support
-```
-
-Full handoff logic: `OFFICE_OPS/coordination/COORDINATION_MATRIX.md`
-
----
-
-## Using with Claude Desktop (Cowork)
-
-This project is designed to work natively with [Claude Desktop](https://claude.com/download) via the **Cowork** tab, which lets you open a local folder as a persistent project so Claude reads your agent files automatically in every conversation.
+This project is built to work natively with [Claude Desktop](https://claude.com/download) via the **Cowork** tab — open your local folder as a persistent project and Claude reads your agent files automatically every session.
 
 ### Setup
 
-1. Open Claude Desktop and click the **Cowork** tab
-2. Click **Projects** in the left panel → **+** to create a new project
-3. Select **"Use an existing folder"** and pick your local `agent-office` directory
-4. Name the project (e.g. "Agent Office") and click **Create**
+1. Open Claude Desktop → **Cowork** tab
+2. Click **Projects** → **+** → **"Use an existing folder"**
+3. Select your local `agent-office` directory → **Create**
 
-Claude will now automatically read `CLAUDE.md` at the start of every session, giving it full context about the project structure, roles, and conventions — no need to re-explain anything.
+Claude automatically reads `CLAUDE.md` at session start, giving it full project context — no re-explaining needed.
 
 ### Recommended workflow
 
-- Open a conversation, activate the **Operations Manager** agent (paste `employee/operations_manager.md` as your system prompt or attach the file), and start delegating tasks
-- Claude can read any file in the project directly — reference `OFFICE_OPS/employees/ROSTER.md`, `COORDINATION_MATRIX.md`, or any role file by name
-- Write daily triage logs to `OFFICE_OPS/reporting/daily/` locally — they're gitignored so they never get committed
+- Activate the **Operations Manager** (`employee/operations_manager.md`) as your system prompt and start delegating
+- Reference any file by name — Claude can read `ROSTER.md`, `COORDINATION_MATRIX.md`, or any role file directly
+- Write daily logs to `OFFICE_OPS/reporting/daily/` — gitignored, stays local
 
-### Connecting external tools via MCP
+### Connect external tools via MCP
 
-Claude Desktop supports MCP (Model Context Protocol) servers that give agents real-time access to external tools. Useful integrations for this setup:
-
-| Tool | What it enables |
+| Tool | What it unlocks |
 |------|----------------|
-| Gmail | Executive Assistant can read/draft emails |
-| Google Calendar | Scheduling, availability checks |
-| Notion | Project tracking, knowledge base |
-| GitHub | Code review, issue management |
-| Slack | Team communication routing |
+| 📧 Gmail | Executive Assistant reads and drafts emails |
+| 📅 Google Calendar | Scheduling and availability checks |
+| 📝 Notion | Project tracking and knowledge base |
+| 🐙 GitHub | Code review and issue management |
+| 💬 Slack | Team communication routing |
 
-To add MCP servers: **Settings → Developer → Edit Config** in Claude Desktop. See the [official MCP docs](https://modelcontextprotocol.io) for server setup instructions.
+To add MCP servers: **Settings → Developer → Edit Config** in Claude Desktop.
+See the [MCP documentation](https://modelcontextprotocol.io) for setup instructions.
 
 ---
 
-## License
+## 📅 Daily Workflow
+
+Defined in `OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md`:
+
+| Time | Activity |
+|------|----------|
+| 8:00–8:30 AM | Dashboard check, email triage, calendar review |
+| 8:30 AM–12:00 PM | Delegate via coordination matrix, process backlog |
+| 1:00–4:00 PM | Monitor delegated work, ad-hoc requests, cross-role coordination |
+| 4:00–5:00 PM | Task close-out, daily log, prep for tomorrow |
+
+Log daily work to `OFFICE_OPS/reporting/daily/YYYY-MM-DD-email-triage.md` — gitignored so operational data stays local.
+
+---
+
+## 🏗 Architecture
+
+```
+You (Human Owner)
+       │
+       ▼
+Operations Manager ◀──────────── all escalations route here
+       │
+       ├──▶ Executive Assistant ◀──▶ Briefing Officer
+       ├──▶ Sales:  SDR → AE → Account Manager → CSM
+       ├──▶ Marketing: Coordinator → Content Writer → Social Media
+       ├──▶ Product Manager
+       ├──▶ Project Manager
+       ├──▶ Legal Counsel ◀──▶ Security Analyst
+       ├──▶ HR Coordinator ◀──▶ Recruiter
+       ├──▶ Data Analyst
+       └──▶ IT Support
+```
+
+Full handoff logic → `OFFICE_OPS/coordination/COORDINATION_MATRIX.md`
+
+---
+
+## ➕ Adding New Agents
+
+1. Create `employee/[role_name].md` (lowercase underscores)
+2. Follow the structure: **Role & Purpose → Tone & Style → Core Capabilities → Response Guidelines → Output Formats → Coordination → Escalation Triggers**
+3. Add to `OFFICE_OPS/employees/ROSTER.md`
+4. Update `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` with new handoffs
+
+See `GAP_ANALYSIS.md` for a prioritized list of roles to add next.
+
+---
+
+## 📁 Project Structure
+
+```
+agent-office/
+├── employee/                       # Role-definition files (system prompts)
+│   ├── operations_manager.md
+│   ├── executive_assistant.md
+│   └── ... (17 more roles)
+├── OFFICE_OPS/                     # Central operations hub
+│   ├── dashboard.html              # Live dashboard (open in browser)
+│   ├── OPERATIONS_GUIDE.md         # Operations Manager quick-start
+│   ├── employees/ROSTER.md         # All agents, capacity, routing rules
+│   ├── coordination/               # Cross-agent handoffs & dependencies
+│   ├── processes/                  # Daily workflow SOPs
+│   ├── reporting/daily/            # Operational logs (gitignored)
+│   ├── projects/                   # Active project tracking
+│   ├── quality/                    # Quality standards & metrics
+│   ├── resources/                  # Capacity planning
+│   ├── training/                   # Onboarding & playbooks
+│   └── incidents/                  # Incident log
+├── skills/                         # Workflow skills
+│   ├── onboard-agent/              # Create new agent roles
+│   ├── daily-triage/               # Daily triage workflow
+│   └── office-health-check/        # Weekly health review
+├── AGENTS.md                       # Repo guidelines
+└── GAP_ANALYSIS.md                 # Expansion roadmap
+```
+
+---
+
+## 📄 License
 
 MIT — fork, customize, and use freely.
