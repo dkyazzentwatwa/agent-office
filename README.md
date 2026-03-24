@@ -3,7 +3,7 @@
 > A complete virtual office of role-defined AI agents — with a coordination framework, operations hub, and live dashboard. Fork it, customize it, run your own AI-powered team.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Agents](https://img.shields.io/badge/agents-19_roles-indigo.svg)
+![Agents](https://img.shields.io/badge/agents-43_roles-indigo.svg)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)
 
 ---
@@ -16,19 +16,21 @@ No build system. No package manager. No external API required. Runs in any AI ch
 
 ---
 
-## 👥 The Team (19 Agents)
+## 👥 The Team (43 Agents)
 
 | Domain | Roles |
 |--------|-------|
-| 🧭 Leadership Support | Executive Assistant, Briefing Officer |
-| 💼 Sales | SDR, Account Executive, Account Manager |
-| 📣 Marketing | Marketing Coordinator, Content Writer, Social Media Crawler |
-| 🛠 Product | Product Manager |
-| ⚙️ Operations | Operations Manager, Project Manager |
+| 🧭 Leadership | CEO / Strategy, Executive Assistant, Briefing Officer, Internal Communications |
+| 💼 Sales | SDR, Account Executive, Account Manager, Sales Manager, Business Development Manager |
+| 📣 Marketing | Marketing Coordinator, Content Writer, Brand Manager, Social Media Manager, SEO Specialist, Community Manager, Social Media Crawler |
+| 🛠 Product | Product Manager, UX/UI Designer, Technical Writer |
+| 💻 Technology | CTO, DevOps Engineer, Solutions Architect, Release Manager |
+| ⚙️ Operations | Operations Manager, Project Manager, Quality Assurance Manager, Procurement Specialist, Facilities Manager |
 | 🎧 Support | Support Specialist, Customer Success Manager |
-| 🧑‍💼 People | HR Coordinator, Recruiter |
-| 📊 Analytics | Data Analyst |
-| ⚖️ Legal / Risk | Legal Counsel, Security Analyst |
+| 🧑‍💼 People | HR Coordinator, Recruiter, Training Specialist, Payroll Specialist |
+| 📊 Analytics | Data Analyst, Data Scientist |
+| 💰 Finance | CFO, Financial Analyst, Investor Relations |
+| ⚖️ Legal / Risk | Legal Counsel, Compliance Officer, Security Analyst |
 | 💻 IT | IT Support |
 
 ---
@@ -111,15 +113,27 @@ You (Human Owner)
        ▼
 Operations Manager ◀──────────── all escalations route here
        │
-       ├──▶ Executive Assistant ◀──▶ Briefing Officer
-       ├──▶ Sales:  SDR → AE → Account Manager → CSM
-       ├──▶ Marketing: Coordinator → Content Writer → Social Media
-       ├──▶ Product Manager
+       ├──▶ CEO / Strategy ◀──▶ CFO ◀──▶ CTO
+       │         └──▶ Briefing Officer ◀──▶ Executive Assistant
+       │         └──▶ Investor Relations, Internal Communications
+       │
+       ├──▶ Sales:  SDR → AE → Account Manager → CSM → Support
+       │         └──▶ Sales Manager, Business Development Manager
+       │
+       ├──▶ Marketing: Brand Manager → Social Media Manager → Community Manager
+       │         └──▶ SEO Specialist → Content Writer → Marketing Coordinator
+       │
+       ├──▶ Technology: CTO → DevOps Engineer, Solutions Architect
+       │         └──▶ Release Manager → QA Manager, Technical Writer
+       │
+       ├──▶ Finance: CFO → Financial Analyst → Payroll Specialist, Procurement
+       │
+       ├──▶ Product: Product Manager → UX/UI Designer
        ├──▶ Project Manager
-       ├──▶ Legal Counsel ◀──▶ Security Analyst
-       ├──▶ HR Coordinator ◀──▶ Recruiter
-       ├──▶ Data Analyst
-       └──▶ IT Support
+       ├──▶ Legal Counsel ◀──▶ Compliance Officer ◀──▶ Security Analyst
+       ├──▶ HR Coordinator ◀──▶ Recruiter, Training Specialist
+       ├──▶ Data Analyst, Data Scientist
+       └──▶ IT Support, Facilities Manager
 ```
 
 Full handoff logic → `OFFICE_OPS/coordination/COORDINATION_MATRIX.md`
@@ -144,7 +158,7 @@ agent-office/
 ├── employee/                       # Role-definition files (system prompts)
 │   ├── operations_manager.md
 │   ├── executive_assistant.md
-│   └── ... (17 more roles)
+│   └── ... (41 more roles)
 ├── OFFICE_OPS/                     # Central operations hub
 │   ├── dashboard.html              # Live dashboard (open in browser)
 │   ├── OPERATIONS_GUIDE.md         # Operations Manager quick-start
