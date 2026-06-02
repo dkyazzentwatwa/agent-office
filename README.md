@@ -3,7 +3,7 @@
 > A complete virtual office of role-defined AI agents — with a coordination framework, operations hub, and live dashboard. Fork it, customize it, run your own AI-powered team.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Agents](https://img.shields.io/badge/agents-43_roles-indigo.svg)
+![Agents](https://img.shields.io/badge/agents-44_roles-indigo.svg)
 ![No dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)
 
 ---
@@ -16,7 +16,7 @@ No build system. No package manager. No external API required. Runs in any AI ch
 
 ---
 
-## 👥 The Team (43 Agents)
+## 👥 The Team (44 Agents)
 
 | Domain | Roles |
 |--------|-------|
@@ -26,7 +26,7 @@ No build system. No package manager. No external API required. Runs in any AI ch
 | 🛠 Product | Product Manager, UX/UI Designer, Technical Writer |
 | 💻 Technology | CTO, DevOps Engineer, Solutions Architect, Release Manager |
 | ⚙️ Operations | Operations Manager, Project Manager, Quality Assurance Manager, Procurement Specialist, Facilities Manager |
-| 🎧 Support | Support Specialist, Customer Success Manager |
+| 🎧 Support | Support Specialist, Customer Success Manager, Flow Helper Support Admin |
 | 🧑‍💼 People | HR Coordinator, Recruiter, Training Specialist, Payroll Specialist |
 | 📊 Analytics | Data Analyst, Data Scientist |
 | 💰 Finance | CFO, Financial Analyst, Investor Relations |
@@ -158,7 +158,7 @@ agent-office/
 ├── employee/                       # Role-definition files (system prompts)
 │   ├── operations_manager.md
 │   ├── executive_assistant.md
-│   └── ... (41 more roles)
+│   └── ... (42 more roles)
 ├── OFFICE_OPS/                     # Central operations hub
 │   ├── dashboard.html              # Live dashboard (open in browser)
 │   ├── OPERATIONS_GUIDE.md         # Operations Manager quick-start

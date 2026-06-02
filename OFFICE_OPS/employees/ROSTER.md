@@ -1,9 +1,9 @@
 # Employee Roster & Utilization
 
-**Last Updated:** 2026-03-24
+**Last Updated:** 2026-05-24
 **Managed by:** Operations Manager
 
-## All 43 Employees
+## All 44 Employees
 
 | Employee | Domain | Status | Primary Customers | Capacity | Notes |
 |----------|--------|--------|------------------|----------|-------|
@@ -25,6 +25,7 @@
 | Executive Assistant | Leadership Support | Active | C-suite, leadership | 90% | Schedules, briefings, operations |
 | Facilities Manager | Operations | Active | All staff | 50% | Office space, vendors, physical ops |
 | Financial Analyst | Finance | Active | Leadership, finance | 65% | Reporting, forecasting, variance analysis |
+| Flow Helper Support Admin | Support / Community Ops | Active | AI Flow Club members, community support | 45% | Human-approved support triage, routing, and reply drafts |
 | HR Coordinator | People | Active | All staff, recruiting | 75% | Hiring, onboarding, culture |
 | Internal Communications | Leadership Support | Active | All staff | 55% | Internal messaging, alignment, culture |
 | Investor Relations | Finance | Active | Leadership, investors | 50% | Investor comms, materials, reporting |
@@ -57,7 +58,7 @@
 
 - **High Utilization (80%+):** Content Writer, Customer Success Manager, Executive Assistant, Marketing Coordinator, Operations Manager, Sales Development Rep (SDR), Support Specialist
 - **Medium Utilization (60–79%):** Account Executive, Account Manager, Brand Manager, Briefing Officer, Business Development Manager, CFO, CTO, Community Manager, Data Analyst, DevOps Engineer, Financial Analyst, HR Coordinator, Legal Counsel, Product Manager, Project Manager, Quality Assurance Manager, Recruiter, Release Manager, Sales Manager, SEO Specialist, Social Media Manager, Solutions Architect, UX/UI Designer
-- **Low Utilization (<60%):** CEO / Strategy, Compliance Officer, Data Scientist, Facilities Manager, Internal Communications, Investor Relations, IT Support, Payroll Specialist, Procurement Specialist, Security Analyst, Social Media Crawler, Technical Writer, Training Specialist
+- **Low Utilization (<60%):** CEO / Strategy, Compliance Officer, Data Scientist, Facilities Manager, Flow Helper Support Admin, Internal Communications, Investor Relations, IT Support, Payroll Specialist, Procurement Specialist, Security Analyst, Social Media Crawler, Technical Writer, Training Specialist
 
 **Recommendation:** Consider routing new work to <60% group if complexity is appropriate.
 
@@ -89,4 +90,5 @@
 - **UX/design** → UX/UI Designer
 - **Data/reporting** → Data Analyst or Data Scientist
 - **Customer support** → Support Specialist
+- **Community support/admin triage** → Flow Helper Support Admin
 - **IT support** → IT Support

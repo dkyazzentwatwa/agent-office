@@ -2,7 +2,7 @@
 
 **Purpose:** Map interdependencies and handoffs between employees
 **Owner:** Operations Manager
-**Last Updated:** 2026-03-24
+**Last Updated:** 2026-05-24
 
 ---
 
@@ -100,6 +100,16 @@ Legal Counsel (policy & contracts)
     → IT Support (security implementation)
 ```
 
+### Community Support Triage
+```
+Community Manager (space health and tone)
+  ↔ Flow Helper Support Admin (support analysis, routing, and reply drafts)
+    → Support Specialist (troubleshooting and unresolved issues)
+    → Customer Success Manager (onboarding and retention signals)
+    → Operations Manager (process gaps and ownership ambiguity)
+    → Security Analyst / Legal Counsel (sensitive risk review)
+```
+
 ---
 
 ## Cross-Functional Dependencies
@@ -139,6 +149,11 @@ Legal Counsel (policy & contracts)
 | Executive Assistant | Operations Manager | Leadership priorities | Daily briefing |
 | Briefing Officer | Executive Assistant | Strategic intel | On-demand |
 | Support Specialist | Account Manager | Escalated issues | Support ticket |
+| Flow Helper Support Admin | Community Manager | Community support triage | New support scan or member-routing issue |
+| Flow Helper Support Admin | Support Specialist | Troubleshooting handoff | Unresolved support request |
+| Flow Helper Support Admin | Customer Success Manager | Onboarding or retention signal | Overwhelm, churn, or activation risk |
+| Flow Helper Support Admin | Security Analyst | Sensitive risk | Credentials, suspicious access, or data exposure |
+| Flow Helper Support Admin | Operations Manager | Process improvement | Recurring support pattern or routing gap |
 
 ---
 
@@ -179,6 +194,12 @@ Legal Counsel (policy & contracts)
 - **Trigger:** Offer accepted
 - **What's needed:** Role brief, team context, day-1 program outline
 - **Success metric:** Day-1 program delivered on start date
+
+### Community Question → Support Front Door
+- **Owner:** Community Manager → Flow Helper Support Admin
+- **Trigger:** Member support question appears in Get Support, Introductions, Start Here, Welcome Checklist, or sanitized DM summary
+- **What's needed:** Source link/date, member-facing context, sensitivity check, recommended owner
+- **Success metric:** Human-approved reply or escalation prepared with clear routing
 
 ---
 
