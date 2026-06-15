@@ -1,4 +1,4 @@
-# AI Agent Office Dashboard
+# Agent Office Dashboard
 
 A single-file HTML operations dashboard for managing your AI employee office. No server, no dependencies — just open and use.
 
@@ -24,7 +24,7 @@ That's it. Works in any modern browser.
 - Sorted by domain
 
 ### 2. Active Projects & Status
-- Project status (🟢 Green / 🟡 Yellow / 🔴 Red)
+- Project status (Green / Yellow / Red)
 - Timeline and blockers
 - Quick view of what's in progress
 
@@ -47,9 +47,9 @@ All dashboard data lives in the `<script>` section at the top of `dashboard.html
 
 ## Design
 
-- Anthropic-branded with black gradient background
-- Indigo + pink accent colors
-- Clean card layout, mobile responsive
+- Neutral Agent Office branding
+- Quiet dashboard layout with status cards and capacity bars
+- Mobile responsive
 
 ---
 

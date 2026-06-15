@@ -1,6 +1,6 @@
 ---
 name: weekly-brief
-description: Use when the user says "weekly brief", "weekly summary", "wrap up the week", "how did this week go", or asks for a weekly status report. Synthesizes daily logs and project files into an executive summary.
+description: Use when the user says "weekly brief", "weekly summary", "wrap up the week", "how did this week go", "Friday review", or asks for a weekly status report. Synthesizes daily logs, project evidence, incidents, escalations, and utilization into an executive summary.
 ---
 
 # Weekly Brief
@@ -10,12 +10,12 @@ Generate an executive summary of the week's activity across all agents, projects
 ## Step 1 — Gather source data
 
 Read in this order:
-1. All files in `OFFICE_OPS/reporting/daily/` — this week's triage logs
-2. Any files in `OFFICE_OPS/projects/` — active project status
-3. Any files in `OFFICE_OPS/incidents/` — open or resolved incidents
+1. All Markdown files in `OFFICE_OPS/reporting/daily/` — this week's triage logs
+2. Any Markdown files in `OFFICE_OPS/projects/` — optional active project evidence
+3. Any Markdown files in `OFFICE_OPS/incidents/` — optional open or resolved incident evidence
 4. `OFFICE_OPS/employees/ROSTER.md` — current utilization
 
-If no daily logs exist for this week, note that and produce a summary from available data only.
+Ignore `.gitkeep` and folder README files as operational evidence. If no daily logs exist for this week, note that and produce a summary from available data only.
 
 ## Step 2 — Synthesize across the week
 
@@ -65,4 +65,4 @@ Identify:
 
 ## Step 4 — Save report
 
-Save to `OFFICE_OPS/reporting/YYYY-MM-DD-weekly-brief.md` using the week-ending date.
+Save to `OFFICE_OPS/reporting/daily/YYYY-MM-DD-weekly-brief.md` using the week-ending date unless the user asks for chat-only output.

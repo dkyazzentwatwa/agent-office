@@ -691,7 +691,7 @@
     <div class="container">
         <header class="topbar">
             <div class="brand-block">
-                <div class="eyebrow">OpenAI-style Operations View</div>
+                <div class="eyebrow">Agent Office Operations View</div>
                 <h1>AI Agent Office</h1>
                 <p>A calm standalone dashboard for routing work, monitoring capacity, and tracking office health across the team.</p>
             </div>
@@ -709,7 +709,7 @@
                 <div class="hero-note">
                     <div class="hero-note-label">Current operating note</div>
                     <strong>Documentation and routing are stable.</strong>
-                    <p>Current follow-up is concentrated on process documentation phase 2 and balancing lower-capacity coverage areas before they become delivery risks.</p>
+                    <p>Current follow-up is concentrated on keeping the beginner skills, routing docs, roster, and dashboard language aligned as the office evolves.</p>
                 </div>
             </div>
         </section>
@@ -757,29 +757,54 @@
         const ROSTER_DATA = [
             { name: 'Account Executive', domain: 'Sales', capacity: 80 },
             { name: 'Account Manager', domain: 'Sales', capacity: 75 },
+            { name: 'Brand Manager', domain: 'Marketing', capacity: 75 },
             { name: 'Briefing Officer', domain: 'Leadership Support', capacity: 70 },
+            { name: 'Business Development Manager', domain: 'Sales', capacity: 70 },
+            { name: 'CEO / Strategy', domain: 'Leadership', capacity: 60 },
+            { name: 'CFO', domain: 'Finance', capacity: 65 },
+            { name: 'Community Manager', domain: 'Marketing', capacity: 65 },
+            { name: 'Compliance Officer', domain: 'Risk & Compliance', capacity: 60 },
             { name: 'Content Writer', domain: 'Marketing', capacity: 85 },
+            { name: 'CTO', domain: 'Technology', capacity: 65 },
             { name: 'Customer Success Manager', domain: 'Success', capacity: 80 },
             { name: 'Data Analyst', domain: 'Operations', capacity: 60 },
+            { name: 'Data Scientist', domain: 'Operations', capacity: 55 },
+            { name: 'DevOps Engineer', domain: 'Infrastructure', capacity: 70 },
             { name: 'Executive Assistant', domain: 'Leadership Support', capacity: 90 },
+            { name: 'Facilities Manager', domain: 'Operations', capacity: 50 },
+            { name: 'Financial Analyst', domain: 'Finance', capacity: 65 },
+            { name: 'Flow Helper Support Admin', domain: 'Support / Community Ops', capacity: 45 },
             { name: 'HR Coordinator', domain: 'People', capacity: 75 },
+            { name: 'Internal Communications', domain: 'Leadership Support', capacity: 55 },
+            { name: 'Investor Relations', domain: 'Finance', capacity: 50 },
             { name: 'IT Support', domain: 'Infrastructure', capacity: 50 },
             { name: 'Legal Counsel', domain: 'Risk & Compliance', capacity: 65 },
             { name: 'Marketing Coordinator', domain: 'Marketing', capacity: 80 },
             { name: 'Operations Manager', domain: 'Operations', capacity: 85 },
+            { name: 'Payroll Specialist', domain: 'People', capacity: 55 },
+            { name: 'Procurement Specialist', domain: 'Operations', capacity: 55 },
             { name: 'Product Manager', domain: 'Product', capacity: 80 },
             { name: 'Project Manager', domain: 'Operations', capacity: 75 },
+            { name: 'Quality Assurance Manager', domain: 'Operations', capacity: 60 },
             { name: 'Recruiter', domain: 'People', capacity: 70 },
+            { name: 'Release Manager', domain: 'Technology', capacity: 65 },
             { name: 'Sales Development Rep (SDR)', domain: 'Sales', capacity: 85 },
+            { name: 'Sales Manager', domain: 'Sales', capacity: 75 },
             { name: 'Security Analyst', domain: 'Risk & Compliance', capacity: 55 },
+            { name: 'SEO Specialist', domain: 'Marketing', capacity: 70 },
             { name: 'Social Media Crawler', domain: 'Marketing', capacity: 40 },
-            { name: 'Support Specialist', domain: 'Customer Support', capacity: 90 }
+            { name: 'Social Media Manager', domain: 'Marketing', capacity: 75 },
+            { name: 'Solutions Architect', domain: 'Technology', capacity: 65 },
+            { name: 'Support Specialist', domain: 'Customer Support', capacity: 90 },
+            { name: 'Technical Writer', domain: 'Product', capacity: 60 },
+            { name: 'Training Specialist', domain: 'People', capacity: 60 },
+            { name: 'UX/UI Designer', domain: 'Product', capacity: 70 }
         ];
 
         const PROJECTS_DATA = [
-            { title: 'Office Operations System Setup', status: 'green', timeline: 'Complete by Mar 31', details: 'Folder structure and core documentation are in place and usable by the office team.' },
-            { title: 'Employee Performance Metrics', status: 'yellow', timeline: 'In progress', details: 'Quality standards and baseline metrics are being defined for consistent weekly reporting.' },
-            { title: 'Process Documentation Phase 2', status: 'yellow', timeline: 'Complete by Apr 15', details: 'Cross-functional SOPs and workflow mapping need additional attention before handoff review.' }
+            { title: 'Ops Control Plane Cleanup', status: 'green', timeline: 'Current', details: 'Core routing, coordination, daily routine, and training references are the active operating surface.' },
+            { title: 'Roster and Routing Alignment', status: 'yellow', timeline: 'Ongoing', details: 'Keep role capacity, handoffs, and dashboard data aligned as employee roles change.' },
+            { title: 'Daily Evidence Trail', status: 'yellow', timeline: 'Ongoing', details: 'Use daily logs, projects, and incidents only when there is real operating evidence to preserve.' }
         ];
 
         const COORDINATION_DATA = [
@@ -935,7 +960,7 @@
                     <div class="metric-box">
                         <div class="metric-label">Projects needing attention</div>
                         <div class="metric-value">${PROJECTS_DATA.filter(project => project.status !== 'green').length}</div>
-                        <div class="metric-copy">Focused follow-up is currently centered on documentation and reporting maturity.</div>
+                        <div class="metric-copy">Focused follow-up is currently centered on keeping routing, handoffs, and local logs aligned.</div>
                     </div>
                 </div>
                 <div class="alert-list">
@@ -949,7 +974,7 @@
                     </div>
                     <div class="alert warning">
                         <div class="alert-label">Focus</div>
-                        <p>Process documentation phase 2 remains the clearest follow-up priority ahead of the April 15, 2026 milestone.</p>
+                        <p>Keep the skill menu and coordination matrix aligned whenever roles, handoffs, or recurring workflows change.</p>
                     </div>
                 </div>
             `;

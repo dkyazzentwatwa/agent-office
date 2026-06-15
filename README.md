@@ -1,4 +1,4 @@
-# 🏢 AI Agent Office
+# Agent Office
 
 > A complete virtual office of role-defined AI agents — with a coordination framework, operations hub, and live dashboard. Fork it, customize it, run your own AI-powered team.
 
@@ -10,32 +10,32 @@
 
 ## What This Is
 
-A **hub-and-spoke AI agent office**: role-specific system prompts ("employees") coordinated through a central operations framework. Each agent has defined capabilities, tone, output formats, coordination partners, and escalation triggers. The Operations Manager routes work between all agents and escalates decisions to you.
+A **role-based AI office**: self-contained employee prompts coordinated through a small operations control plane. Each employee has defined capabilities, tone, output formats, coordination partners, and escalation triggers. The Operations Manager routes work between employees and escalates decisions to you.
 
-No build system. No package manager. No external API required. Runs in any AI chat interface using markdown files as system prompts.
+No build system. No package manager. No external API required. Designed for Codex and Claude Cowork using Markdown files as instructions and operating context.
 
 ---
 
-## 👥 The Team (44 Agents)
+## The Team (44 Agents)
 
 | Domain | Roles |
 |--------|-------|
-| 🧭 Leadership | CEO / Strategy, Executive Assistant, Briefing Officer, Internal Communications |
-| 💼 Sales | SDR, Account Executive, Account Manager, Sales Manager, Business Development Manager |
-| 📣 Marketing | Marketing Coordinator, Content Writer, Brand Manager, Social Media Manager, SEO Specialist, Community Manager, Social Media Crawler |
-| 🛠 Product | Product Manager, UX/UI Designer, Technical Writer |
-| 💻 Technology | CTO, DevOps Engineer, Solutions Architect, Release Manager |
-| ⚙️ Operations | Operations Manager, Project Manager, Quality Assurance Manager, Procurement Specialist, Facilities Manager |
-| 🎧 Support | Support Specialist, Customer Success Manager, Flow Helper Support Admin |
-| 🧑‍💼 People | HR Coordinator, Recruiter, Training Specialist, Payroll Specialist |
-| 📊 Analytics | Data Analyst, Data Scientist |
-| 💰 Finance | CFO, Financial Analyst, Investor Relations |
-| ⚖️ Legal / Risk | Legal Counsel, Compliance Officer, Security Analyst |
-| 💻 IT | IT Support |
+| Leadership | CEO / Strategy, Executive Assistant, Briefing Officer, Internal Communications |
+| Sales | SDR, Account Executive, Account Manager, Sales Manager, Business Development Manager |
+| Marketing | Marketing Coordinator, Content Writer, Brand Manager, Social Media Manager, SEO Specialist, Community Manager, Social Media Crawler |
+| Product | Product Manager, UX/UI Designer, Technical Writer |
+| Technology | CTO, DevOps Engineer, Solutions Architect, Release Manager |
+| Operations | Operations Manager, Project Manager, Quality Assurance Manager, Procurement Specialist, Facilities Manager |
+| Support | Support Specialist, Customer Success Manager, Flow Helper Support Admin |
+| People | HR Coordinator, Recruiter, Training Specialist, Payroll Specialist |
+| Analytics | Data Analyst, Data Scientist |
+| Finance | CFO, Financial Analyst, Investor Relations |
+| Legal / Risk | Legal Counsel, Compliance Officer, Security Analyst |
+| IT | IT Support |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 **1. Activate an agent**
 
@@ -57,40 +57,109 @@ Double-click `OFFICE_OPS/dashboard.html` — no server needed, works in any brow
 
 ---
 
-## 🖥 Using with Claude Desktop (Cowork)
+## Beginner Skill Menu
 
-This project is built to work natively with [Claude Desktop](https://claude.com/download) via the **Cowork** tab — open your local folder as a persistent project and Claude reads your agent files automatically every session.
+Skills are ready-made office routines. You do not need to know the file names. Ask for the outcome you want, and the office should pick the right routine.
 
-### Setup
+### Start here
 
-1. Open Claude Desktop → **Cowork** tab
-2. Click **Projects** → **+** → **"Use an existing folder"**
-3. Select your local `agent-office` directory → **Create**
+| If you want to... | Say something like... | What the office does |
+|-------------------|-----------------------|----------------------|
+| Sort emails | "Triage these emails." | Finds replies, delegations, calendar actions, and decisions |
+| Review the day | "Triage my calendar." | Spots prep, conflicts, reschedules, and focus blocks |
+| Look something up safely | "Search the web and verify this." | Uses source-backed web research without exposing private data |
+| Find the right employee | "Who should own this?" | Routes the request to the best employee or small team |
+| Get a quick snapshot | "Give me a standup." | Summarizes active work, blockers, priorities, and capacity flags |
 
-Claude automatically reads `CLAUDE.md` at session start, giving it full project context — no re-explaining needed.
+### When you are ready for bigger routines
 
-### Recommended workflow
+| If you want to... | Say something like... | What the office does |
+|-------------------|-----------------------|----------------------|
+| Start the day with multiple inputs | "Run daily triage." | Combines tasks, routing, decisions, and a daily log |
+| Check whether the office is overloaded | "Do an office health check." | Reviews capacity, projects, incidents, and coordination gaps |
+| Wrap up the week | "Write a weekly brief." | Turns daily logs and project notes into an executive summary |
+| Add a new specialist | "Add a new agent for partnerships." | Creates a role prompt and updates the roster and handoffs |
 
-- Activate the **Operations Manager** (`employee/operations_manager.md`) as your system prompt and start delegating
-- Reference any file by name — Claude can read `ROSTER.md`, `COORDINATION_MATRIX.md`, or any role file directly
-- Write daily logs to `OFFICE_OPS/reporting/daily/` — gitignored, stays local
+Good starter prompts:
 
-### Connect external tools via MCP
+```text
+Who should handle this request?
+Triage these emails and draft the replies I should send.
+Triage my calendar and tell me what needs prep.
+Search the web safely and verify this before I use it.
+Give me a standup for today.
+```
 
-| Tool | What it unlocks |
-|------|----------------|
-| 📧 Gmail | Executive Assistant reads and drafts emails |
-| 📅 Google Calendar | Scheduling and availability checks |
-| 📝 Notion | Project tracking and knowledge base |
-| 🐙 GitHub | Code review and issue management |
-| 💬 Slack | Team communication routing |
-
-To add MCP servers: **Settings → Developer → Edit Config** in Claude Desktop.
-See the [MCP documentation](https://modelcontextprotocol.io) for setup instructions.
+The detailed skill files live in `skills/`, but most users can stay in plain English.
 
 ---
 
-## 📅 Daily Workflow
+## Ops Control Plane
+
+`OFFICE_OPS/` is intentionally small. It is the shared control plane for routing, delegation, daily logs, and review.
+
+| Path | Purpose |
+|------|---------|
+| `OFFICE_OPS/employees/ROSTER.md` | Role inventory, domains, capacity, and routing shortcuts |
+| `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` | Cross-role handoffs and escalation patterns |
+| `OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md` | Daily route -> delegate -> log -> review workflow |
+| `OFFICE_OPS/training/FIRST_USER_GUIDE.md` | First-time user guide |
+| `OFFICE_OPS/reporting/daily/` | Local daily logs; gitignored except `.gitkeep` |
+| `OFFICE_OPS/projects/` | Optional active-work evidence |
+| `OFFICE_OPS/incidents/` | Optional blocker or failure evidence |
+| `OFFICE_OPS/dashboard.html` | Single-file browser dashboard |
+
+---
+
+## Using With Codex
+
+Codex reads repository guidance from `AGENTS.md`. Start Codex in this folder and ask it to route, triage, update docs, or run one of the office skills.
+
+Useful starter prompts:
+
+```text
+Read AGENTS.md and give me a standup.
+Use skills/email-triage/SKILL.md to triage these emails.
+Review the office docs for stale references.
+```
+
+See `docs/codex-instructions.md` for a copy-paste friendly Codex operating prompt.
+
+---
+
+## Using With Claude Cowork
+
+This project is built to work with [Claude Desktop](https://claude.com/download) Cowork by selecting this local folder and using the repo files as folder context.
+
+### Setup
+
+1. Open Claude Desktop and go to Cowork.
+2. Use an existing local folder and select your `agent-office` directory.
+3. Add folder instructions from `docs/claude-cowork-instructions.md` if Cowork asks for project-specific guidance.
+
+Cowork can use folder instructions and local files as context. Keep instructions short, and point Claude to the specific file you want it to use when precision matters.
+
+### Recommended workflow
+
+- Start by asking: "Who should handle this?" or "Triage these emails."
+- Reference files by name, such as `ROSTER.md`, `COORDINATION_MATRIX.md`, or a role file in `employee/`
+- Write daily logs to `OFFICE_OPS/reporting/daily/` — gitignored, stays local
+
+### Connect external tools
+
+| Tool | What it unlocks |
+|------|----------------|
+| Gmail | Executive Assistant reads and drafts emails |
+| Calendar | Scheduling and availability checks |
+| Browser/search | Source-backed research |
+| GitHub | Code review and issue management |
+| Slack | Team communication routing |
+
+Use Claude's current Cowork connector/plugin flow for external tools. Keep folder access narrow and review actions before allowing file deletion or external changes.
+
+---
+
+## Daily Workflow
 
 Defined in `OFFICE_OPS/processes/DAILY_ROUTINE_SOP.md`:
 
@@ -105,7 +174,7 @@ Log daily work to `OFFICE_OPS/reporting/daily/YYYY-MM-DD-email-triage.md` — gi
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 You (Human Owner)
@@ -140,18 +209,14 @@ Full handoff logic → `OFFICE_OPS/coordination/COORDINATION_MATRIX.md`
 
 ---
 
-## ➕ Adding New Agents
+## Adding New Agents
 
 1. Create `employee/[role_name].md` (lowercase underscores)
 2. Follow the structure: **Role & Purpose → Tone & Style → Core Capabilities → Response Guidelines → Output Formats → Coordination → Escalation Triggers**
 3. Add to `OFFICE_OPS/employees/ROSTER.md`
 4. Update `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` with new handoffs
 
-See `GAP_ANALYSIS.md` for a prioritized list of roles to add next.
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 agent-office/
@@ -159,28 +224,34 @@ agent-office/
 │   ├── operations_manager.md
 │   ├── executive_assistant.md
 │   └── ... (42 more roles)
-├── OFFICE_OPS/                     # Central operations hub
+├── OFFICE_OPS/                     # Small operations control plane
 │   ├── dashboard.html              # Live dashboard (open in browser)
-│   ├── OPERATIONS_GUIDE.md         # Operations Manager quick-start
+│   ├── OPERATIONS_GUIDE.md         # Operations Manager guide
 │   ├── employees/ROSTER.md         # All agents, capacity, routing rules
-│   ├── coordination/               # Cross-agent handoffs & dependencies
-│   ├── processes/                  # Daily workflow SOPs
+│   ├── coordination/COORDINATION_MATRIX.md
+│   ├── processes/DAILY_ROUTINE_SOP.md
+│   ├── training/FIRST_USER_GUIDE.md
 │   ├── reporting/daily/            # Operational logs (gitignored)
-│   ├── projects/                   # Active project tracking
-│   ├── quality/                    # Quality standards & metrics
-│   ├── resources/                  # Capacity planning
-│   ├── training/                   # Onboarding & playbooks
-│   └── incidents/                  # Incident log
-├── skills/                         # Workflow skills
-│   ├── onboard-agent/              # Create new agent roles
-│   ├── daily-triage/               # Daily triage workflow
-│   └── office-health-check/        # Weekly health review
-├── AGENTS.md                       # Repo guidelines
-└── GAP_ANALYSIS.md                 # Expansion roadmap
+│   ├── projects/                   # Optional active-work evidence
+│   └── incidents/                  # Optional blocker/failure evidence
+├── skills/                         # Plain-English office routines
+│   ├── email-triage/               # Sort emails into replies, delegation, and decisions
+│   ├── calendar-triage/            # Review meetings, conflicts, prep, and focus time
+│   ├── safe-agent-web-search/      # Source-backed web research with safety rules
+│   ├── office-manager-router/      # Decide who should handle work
+│   ├── daily-triage/               # Sort inbox/tasks into owners and decisions
+│   ├── standup/                    # Quick status snapshot
+│   ├── office-health-check/        # Capacity and risk review
+│   ├── weekly-brief/               # End-of-week summary
+│   └── onboard-agent/              # Add a new employee role
+├── docs/                           # Codex and Claude Cowork instructions
+│   ├── codex-instructions.md
+│   └── claude-cowork-instructions.md
+└── AGENTS.md                       # Codex/repo guidelines
 ```
 
 ---
 
-## 📄 License
+## License
 
 MIT — fork, customize, and use freely.

@@ -1,205 +1,129 @@
-# Operations Manager — Quick Start Guide
+# Operations Manager Guide
 
-**System Owner:** Operations Manager  
-**Team Size:** 21 AI employees across 6 functional domains  
-**Last Updated:** 2026-03-20
+**System owner:** Operations Manager
+**Team size:** 44 AI employees
+**Status:** Active
 
----
+## Job in One Sentence
 
-## Your Job in One Sentence
-**Keep the AI employee office running smoothly by managing processes, capacity, and coordination.**
+Keep the AI employee office easy to route, easy to coordinate, and easy to review.
 
----
+## Operating Model
 
-## Five Core Responsibilities
+Agent Office has three layers:
 
-### 1. **Route Work Efficiently**
-- Incoming requests come to you first
-- Check `/employees/ROSTER.md` for capacity
-- Use `/coordination/COORDINATION_MATRIX.md` to find the right employee
-- Verify they have bandwidth before assigning
+| Layer | Path | Purpose |
+|-------|------|---------|
+| Role library | `employee/` | Self-contained employee prompts and role boundaries |
+| Skill menu | `skills/` | Beginner-friendly routines for email, calendar, web research, routing, status, and office review |
+| Ops control plane | `OFFICE_OPS/` | Roster, handoffs, daily routine, local logs, and dashboard |
 
-### 2. **Maintain Process Documentation**
-- Store all SOPs in `/processes/`
-- Update `MASTER_WORKFLOWS.md` when processes change
-- Keep documentation current (review quarterly)
+The ops hub should stay small. If a new document does not help routing, delegation, logging, or review, it probably belongs outside `OFFICE_OPS/`.
 
-### 3. **Track Projects & Initiatives**
-- Log all projects in `/projects/PROJECT_LOG.md`
-- Status check: red/yellow/green + blockers
-- Identify cross-functional dependencies early
-- Flag risks before they become incidents
+## Core Responsibilities
 
-### 4. **Monitor Quality & Performance**
-- Define standards in `/quality/QUALITY_STANDARDS.md`
-- Track metrics in `/quality/PERFORMANCE_METRICS.md`
-- Review weekly in `/reporting/WEEKLY_STATUS.md`
-- Escalate quality issues to relevant team lead
+### 1. Route Work
 
-### 5. **Resolve Conflicts & Bottlenecks**
-- Use `/coordination/ESCALATION_PATHS.md` when stuck
-- Identify process failures in `/incidents/INCIDENT_LOG.md`
-- Propose improvements in `/quality/` docs
-- Follow up: verify resolutions stick
+- Check `employees/ROSTER.md` for role fit, domain, and capacity.
+- Use `coordination/COORDINATION_MATRIX.md` when work crosses roles.
+- Route to one clear owner when possible.
+- Bring in a small support group when the work needs handoffs.
 
----
+### 2. Delegate Clearly
 
-## Key Documents You'll Use Daily
+Every assignment should include:
 
-| Document | When | Action |
-|----------|------|--------|
-| `ROSTER.md` | Routing new work | Check capacity before assigning |
-| `COORDINATION_MATRIX.md` | Planning cross-functional work | Map handoffs, identify blockers |
-| `WEEKLY_STATUS.md` | End of week | Summarize health, flag issues |
-| `PROJECT_LOG.md` | Any project update | Keep timeline & status current |
-| `INCIDENT_LOG.md` | When something breaks | Document, assign owner, track resolution |
-
----
-
-## Typical Week
-
-**Monday:**
-- Review incoming requests from `/projects/` backlog
-- Check ROSTER.md — who has capacity?
-- Route work with clear expectations
-
-**Tuesday-Thursday:**
-- Monitor ongoing projects for blockers
-- Catch coordination issues early
-- Update PROJECT_LOG with status
-
-**Friday:**
-- Compile WEEKLY_STATUS from metrics
-- Review any incidents from the week
-- Brief leadership on office health
-
----
-
-## Decision Tree: "Who Does This?"
-
-```
-Is it sales-related?
-  ├─ Cold outreach → SDR
-  ├─ Closing deal → Account Executive
-  ├─ Account management → Account Manager
-  └─ Customer success → Customer Success Manager
-
-Is it marketing/content?
-  ├─ Blog/writing → Content Writer
-  ├─ Campaign → Marketing Coordinator
-  ├─ Social/research → Social Media Crawler
-  └─ Metrics → Data Analyst
-
-Is it leadership/strategy?
-  ├─ Executive schedule → Executive Assistant
-  ├─ Strategic intelligence → Briefing Officer
-  ├─ Process/efficiency → Operations Manager (YOU)
-  └─ Project execution → Project Manager
-
-Is it people/hiring?
-  ├─ Recruiting → Recruiter
-  ├─ Onboarding/culture → HR Coordinator
-  └─ HR policy → Legal Counsel
-
-Is it legal/security?
-  ├─ Contracts/compliance → Legal Counsel
-  ├─ Threat/security → Security Analyst
-  └─ Systems → IT Support
-
-Is it customer support?
-  └─ Support tickets → Support Specialist
-
-Is it product?
-  ├─ Roadmap/strategy → Product Manager
-  └─ Other → relevant domain above
-```
-
----
-
-## Red Flags (Escalate Immediately)
-
-🚩 **Process failure or outage** → Escalate to Leadership  
-🚩 **Resource constraint blocking work** → Add to CAPACITY_PLAN discussion  
-🚩 **Vendor/vendor relationship at risk** → Flag for negotiation  
-🚩 **Compliance or audit finding** → Escalate to Legal Counsel  
-🚩 **Cross-team conflict unresolved** → Facilitate resolution, document in INCIDENTS  
-🚩 **Quality issue recurring** → Root cause analysis + process change  
-
----
-
-## Metrics to Track Weekly
-
-- **Utilization:** How busy is each employee? (from ROSTER)
-- **Cycle time:** How long from request → completion?
-- **Quality:** Defect rate, rework, escalations?
-- **Bottlenecks:** What's slowing work down?
-- **Satisfaction:** Are requesters happy with routing?
-
----
-
-## How to Use This System
-
-**Step 1:** When work arrives, ask:
-- "Who owns this?"
-- "Do they have bandwidth?"
-- "What do they need from me?"
-
-**Step 2:** Assign clearly:
-- Document in PROJECT_LOG
-- Link to relevant COORDINATION step
-- Set deadline and success criteria
-
-**Step 3:** Monitor:
-- Weekly status check
-- Flag blockers early
-- Update PROJECT_LOG
-
-**Step 4:** Close & Learn:
-- Document outcome
-- Note what worked, what didn't
-- Update processes if needed
-
----
-
-## Template: Work Assignment
-
-When assigning work to an employee, include:
-```
+```text
 TO: [Employee Name]
 FROM: Operations Manager
 DATE: [Today]
 PRIORITY: [High/Medium/Low]
 
-TASK: [Clear, specific request]
-
-CONTEXT: [Why this matters, who needs it]
-
-DEPENDENCIES: [What/who needs to happen first]
-
-DEADLINE: [Specific date & time]
-
-SUCCESS CRITERIA: [How we know this is done well]
-
-QUESTIONS?: [Open issues needing clarity]
+TASK: [Clear request]
+CONTEXT: [Why this matters]
+DEPENDENCIES: [Inputs or handoffs needed]
+DEADLINE: [Specific date or timing]
+SUCCESS CRITERIA: [How we know it is done]
+QUESTIONS: [Open issues, if any]
 ```
 
----
+### 3. Log What Matters
 
-## You Own These Tools
+- Use `reporting/daily/` for daily triage, decisions, escalations, and carry-forward notes.
+- Use `projects/` only for active work that needs a durable brief or status note.
+- Use `incidents/` only for blockers, failures, sensitive issues, or repeat process problems.
 
-- **COORDINATION_MATRIX.md** — Update as roles change
-- **ROSTER.md** — Monthly capacity review
-- **QUALITY_STANDARDS.md** — Sets bar for all employees
-- **WEEKLY_STATUS.md** — Your voice to leadership
-- **INCIDENT_LOG.md** — Learning archive
+### 4. Review and Improve
 
----
+- Rebalance work when the roster shows overloaded roles.
+- Update `COORDINATION_MATRIX.md` when handoffs change.
+- Update `DAILY_ROUTINE_SOP.md` when the actual daily loop changes.
+- Keep docs short enough that an AI employee or human can use them quickly.
 
-## Questions?
+## Routing Shortcuts
 
-Refer back to:
-- Employee role files (`employee/` folder) for role details
-- GAP_ANALYSIS.md for team structure issues
-- Coordination files for handoff clarity
+| Request type | Primary owner | Common support |
+|--------------|---------------|----------------|
+| Cold outreach or lead generation | SDR | Sales Manager, Account Executive |
+| Closing or enterprise deal work | Account Executive | Solutions Architect, Legal Counsel |
+| Existing customer growth | Account Manager | Customer Success Manager |
+| Onboarding or retention risk | Customer Success Manager | Support Specialist, Account Manager |
+| Support ticket or troubleshooting | Support Specialist | IT Support, Customer Success Manager |
+| Product strategy or requirements | Product Manager | UX/UI Designer, Data Analyst |
+| Delivery timeline or milestone plan | Project Manager | Operations Manager |
+| Process or operating cadence | Operations Manager | Data Analyst |
+| Metrics, dashboards, or trend analysis | Data Analyst | Data Scientist |
+| Hiring or recruiting | Recruiter | HR Coordinator |
+| People operations or onboarding | HR Coordinator | Training Specialist |
+| Contract, policy, or compliance review | Legal Counsel | Compliance Officer |
+| Security risk or threat response | Security Analyst | IT Support, Legal Counsel |
+| Campaign, launch, or distribution | Marketing Coordinator | Content Writer, Brand Manager |
+| Long-form writing or messaging | Content Writer | SEO Specialist, Brand Manager |
+| Social channel execution | Social Media Manager | Community Manager |
+| Social listening or research | Social Media Crawler | Data Analyst |
+| Executive scheduling or prioritization | Executive Assistant | Briefing Officer |
+| Strategic briefing or research synthesis | Briefing Officer | Executive Assistant |
 
-Your goal: Make the office run so smoothly that people don't notice you. ✨
+## Skill Menu
+
+Use skills when the user wants a repeatable office routine, not just a one-off answer.
+
+| Need | Plain-English request | Skill |
+|------|-----------------------|-------|
+| Sort email | "Triage these emails." | `skills/email-triage/` |
+| Review the day | "Triage my calendar." | `skills/calendar-triage/` |
+| Research safely | "Search the web and verify this." | `skills/safe-agent-web-search/` |
+| Pick the right employee | "Who should handle this?" | `skills/office-manager-router/` |
+| Sort mixed work and assign owners | "Run daily triage." | `skills/daily-triage/` |
+| See today's status | "Give me a standup." | `skills/standup/` |
+| Check overload and gaps | "Do an office health check." | `skills/office-health-check/` |
+| Summarize the week | "Write a weekly brief." | `skills/weekly-brief/` |
+| Add a new role | "Add a new agent for [role]." | `skills/onboard-agent/` |
+
+For a new user, recommend starting with: "Triage these emails," "Triage my calendar," or "Who should handle this?"
+
+## Escalate Immediately
+
+- Ownership is unclear after checking the roster and coordination matrix.
+- A customer, revenue, legal, security, or compliance issue is blocked.
+- Two roles disagree on priority or decision authority.
+- A request requires private data, credentials, or human approval.
+- The same routing or quality problem appears more than once.
+
+## Weekly Review
+
+Use the office skills or the core docs to answer:
+
+- Which roles are at or above 80% utilization?
+- Which work items carried forward from daily logs?
+- Which projects or incidents need a human decision?
+- Which handoffs in `COORDINATION_MATRIX.md` need clarification?
+- Which docs can be shortened, merged, or removed?
+
+## Related Docs
+
+- `employees/ROSTER.md` - current employee inventory and capacity
+- `coordination/COORDINATION_MATRIX.md` - handoffs and escalation patterns
+- `processes/DAILY_ROUTINE_SOP.md` - daily route -> delegate -> log -> review loop
+- `training/FIRST_USER_GUIDE.md` - first-time user instructions
+- `dashboard.html` - browser dashboard

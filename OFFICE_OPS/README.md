@@ -1,65 +1,39 @@
-# AI Employee Office Operations Hub
+# Agent Office Ops Hub
 
 Managed by: **Operations Manager**
 
-This structure supports the orchestration, coordination, and optimization of all AI employees across [Your Company].
+`OFFICE_OPS/` is the control plane for the AI employee office. It does not try to be a full company intranet. It keeps the few shared references that help the 44 role files in `employee/` route work, coordinate handoffs, and leave a local operating trail.
 
-## Directories
+## Active Sources
 
-### `/employees/`
-Master record for each employee role — capacity, availability, skill matrix, performance metrics.
-- `ROSTER.md` — Current employee statuses and utilization
-- `[role]_profile.md` — Detailed capability and boundary documentation for each role
+| Path | Use it for |
+|------|------------|
+| `employees/ROSTER.md` | Role inventory, domains, capacity, and routing shortcuts |
+| `coordination/COORDINATION_MATRIX.md` | Cross-role handoffs, escalation paths, and coordination patterns |
+| `processes/DAILY_ROUTINE_SOP.md` | The daily route -> delegate -> log -> review operating loop |
+| `reporting/daily/` | Local daily logs and triage notes; private by default |
+| `projects/` | Optional evidence for active work that spans more than one task |
+| `incidents/` | Optional evidence for blockers, failures, or repeat issues |
+| `training/FIRST_USER_GUIDE.md` | How a person should work with the office |
+| `dashboard.html` | Single-file visual snapshot; open directly in a browser |
 
-### `/processes/`
-Standard Operating Procedures and workflows that govern how employees work together.
-- `MASTER_WORKFLOWS.md` — Cross-functional process flows
-- `[process]_sop.md` — Individual standard operating procedures
+## Daily Loop
 
-### `/projects/`
-Ongoing office initiatives, improvements, or major workflows being tracked.
-- `PROJECT_LOG.md` — All active and completed projects
-- `[project]_brief.md` — Individual project charters and status
+1. **Route** incoming work with `ROSTER.md` and `COORDINATION_MATRIX.md`.
+2. **Delegate** to one employee or a small coordinated group.
+3. **Log** important triage, escalations, and decisions in `reporting/daily/`.
+4. **Review** open projects, incidents, and capacity before the next routing pass.
 
-### `/resources/`
-Resource planning, capacity management, and allocation tracking.
-- `CAPACITY_PLAN.md` — Who has bandwidth for what
-- `UTILIZATION_DASHBOARD.md` — Real-time availability and task load
+## Optional Folders
 
-### `/quality/`
-Standards, metrics, and quality assurance for employee outputs.
-- `QUALITY_STANDARDS.md` — Expected output quality, SLAs
-- `PERFORMANCE_METRICS.md` — How we measure employee effectiveness
+`projects/` and `incidents/` are intentionally lightweight. Add Markdown files there only when there is real evidence to preserve. Do not create extra department folders or planning docs unless the office is actually using them.
 
-### `/reporting/`
-Dashboards, status reports, and insights for leadership.
-- `WEEKLY_STATUS.md` — Office operations health check
-- `ANALYTICS.md` — Trends, bottlenecks, optimization opportunities
+## Dashboard
 
-### `/coordination/`
-Cross-functional work, handoffs, and dependency mapping.
-- `COORDINATION_MATRIX.md` — Who works with whom and why
-- `ESCALATION_PATHS.md` — How issues move between employees
+Open the dashboard directly:
 
-### `/training/`
-Onboarding docs and continuous improvement resources.
-- `ONBOARDING.md` — How new employees integrate
-- `PLAYBOOKS/` — Decision trees and best practice guides
+```bash
+open OFFICE_OPS/dashboard.html
+```
 
-### `/incidents/`
-Tracking issues, conflicts, or gaps in operations.
-- `INCIDENT_LOG.md` — Issues discovered and resolutions
-- `GAP_REGISTER.md` — Known capability gaps and mitigation plans
-
----
-
-## Quick Operations Tasks
-
-**As the Operations Manager, you can:**
-
-1. **Route incoming work** → Check COORDINATION_MATRIX to find the right employee
-2. **Check capacity** → Review UTILIZATION_DASHBOARD before assigning new tasks
-3. **Resolve conflicts** → Use ESCALATION_PATHS and employee boundaries
-4. **Track progress** → Update PROJECT_LOG with status
-5. **Report to leadership** → Generate WEEKLY_STATUS from metrics and dashboards
-
+No server, build step, or package install is required.

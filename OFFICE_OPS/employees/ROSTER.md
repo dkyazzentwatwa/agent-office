@@ -1,6 +1,6 @@
 # Employee Roster & Utilization
 
-**Last Updated:** 2026-05-24
+**Last Updated:** 2026-06-15
 **Managed by:** Operations Manager
 
 ## All 44 Employees

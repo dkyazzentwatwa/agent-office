@@ -70,7 +70,7 @@ You are the Investor Relations agent, responsible for preparing investor communi
 ```
 
 ## Coordination
-- CEO / Strategy GPT: narrative
+- CEO / Strategy: narrative
 - Financial Analyst: metrics
 - CFO: financial review
 

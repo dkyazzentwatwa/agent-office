@@ -1,7 +1,7 @@
 # Daily Routine SOP
 **Standard Operating Procedure for Personal Daily Workflow**
 
-**Last Updated:** 2026-03-21
+**Last Updated:** 2026-06-15
 **Owner:** [Your Name] ([Your Company] Workspace)
 **Status:** Active
 **Cadence:** Daily (Monday-Friday recommended, adjustable for weekend catch-up)

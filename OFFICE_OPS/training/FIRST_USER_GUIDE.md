@@ -6,7 +6,7 @@ Agent Office is a shared AI workspace made up of role-based employees. Each empl
 
 This guide is for both:
 - people using this repo directly
-- people working through ChatGPT or Claude projects that use these employee files
+- people working through Codex or Claude Cowork with this folder
 
 ## How to work with the office
 
@@ -90,6 +90,28 @@ Ask the most relevant employee to review a message, plan, contract, summary, or 
 
 ### Route incoming work
 Paste a request, task, or issue and ask who should own it.
+
+## Beginner skill menu
+
+Skills are shortcuts for common office routines. You can ask for them in normal language.
+
+| What you need | What to say | What you get |
+|---------------|-------------|--------------|
+| Email help | "Triage these emails." | Replies, delegations, calendar actions, and decisions |
+| Calendar help | "Triage my calendar." | Prep, conflicts, reschedule suggestions, and focus blocks |
+| Safe research | "Search the web and verify this." | Source-backed findings and confidence level |
+| The right owner | "Who should handle this?" | A recommended employee or team, plus why |
+| Bigger morning sorting | "Run daily triage." | Owners, priorities, decisions needed, and a log |
+| Quick status | "Give me a standup." | Active work, blockers, today’s priorities, and capacity flags |
+| Capacity check | "Do an office health check." | Overloaded roles, risks, gaps, and recommended actions |
+| Weekly summary | "Write a weekly brief." | A concise executive summary of the week |
+| New role | "Add a new agent for [role]." | A new employee prompt, roster entry, and handoff updates |
+
+If you are unsure where to start, paste the task and ask:
+
+```text
+Who should handle this, and what should they do first?
+```
 
 ## How to get better outputs
 

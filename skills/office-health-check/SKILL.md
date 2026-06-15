@@ -1,6 +1,6 @@
 ---
 name: office-health-check
-description: Use when the user says "health check", "how is the office doing", "check team capacity", "office status", "what's overloaded", or asks for a team overview. Reviews utilization, projects, escalations, and coordination gaps.
+description: Use when the user says "health check", "how is the office doing", "check team capacity", "office status", "what's overloaded", asks for an office overview, or wants risks across Agent Office. Reviews utilization, projects, incidents, escalations, and coordination gaps.
 ---
 
 # Office Health Check
@@ -8,10 +8,13 @@ description: Use when the user says "health check", "how is the office doing", "
 ## Step 1 — Read current state
 
 Read these files in order:
+
 1. `OFFICE_OPS/employees/ROSTER.md` — utilization and capacity
 2. `OFFICE_OPS/coordination/COORDINATION_MATRIX.md` — active flows and handoffs
-3. Any files in `OFFICE_OPS/projects/` — active project status
-4. Any files in `OFFICE_OPS/incidents/` — open incidents
+3. Any Markdown files in `OFFICE_OPS/projects/` — optional active project evidence
+4. Any Markdown files in `OFFICE_OPS/incidents/` — optional open incident evidence
+
+If optional folders contain only README files or no project/incident files, say there is no active evidence in that folder.
 
 ## Step 2 — Evaluate against thresholds
 
@@ -21,6 +24,8 @@ Read these files in order:
 | Open escalations | 0 | 1–2 | 3+ |
 | Stalled projects | 0 | 1 | 2+ |
 | Coordination gaps | None | Minor | Blocking |
+
+Treat roles at exactly 90% as at capacity, and roles above 90% as overloaded. If no roles are above 90%, do not invent overload.
 
 ## Step 3 — Produce health summary
 
@@ -52,4 +57,4 @@ Read these files in order:
 
 ## Step 4 — Save report
 
-Save output to `OFFICE_OPS/reporting/YYYY-MM-DD-health-check.md`.
+Save output to `OFFICE_OPS/reporting/daily/YYYY-MM-DD-health-check.md` unless the user asks for chat-only output.
